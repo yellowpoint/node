@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>51app添加新闻</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="src/css/layui.css">
+
+		<style>
+			body {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="layui-form layui-form-pane1" action="" lay-filter="first">
+			<div class="layui-form-item">
+				<label class="layui-form-label">标题</label>
+				<div class="layui-input-block">
+					<input type="text" name="title" lay-verify="required|title" required placeholder="请输入标题" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+
+				<div class="layui-upload">
+					<div class="layui-row">
+						<div class="layui-col-md3">
+							<label class="layui-form-label">图片</label>
+							<button type="button" class="layui-btn" id="newsImgUpload">上传图片</button>
+
+						</div>
+						<div class="layui-col-md9">
+							<div class="layui-upload-list" style="width: 300px; height: 300px; overflow: auto;">
+								<img style="width: 100%;" class="layui-upload-img" src="https://placem.at/things?w=300&random=some_seed" id="newsImgPreview">
+							</div>
+							<p id="newsImgError"></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">日期</label>
+				<div class="layui-input-inline">
+					<input type="text" name="newsDate" class="layui-input" id="newsDate" lay-verify="required" required>
+				</div>
+				<div class="layui-form-mid layui-word-aux">新闻发生的日期</div>
+			</div>
+
+			<!--todo: 需要一个可以输入的单选下拉-->
+			<div class="layui-form-item">
+				<label class="layui-form-label">部门</label>
+				<div class="layui-input-inline">
+					<select class="news-department" required name="department" lay-filter="interest-search" lay-search>
+						<option value=""></option>
+						<option value="商务部">商务部</option>
+						<option value="行政部">行政部</option>
+						<option value="运营部">运营部</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">新闻描述</label>
+				<div class="layui-input-block">
+					<textarea placeholder="请输入内容" class="layui-textarea" name="intro"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+					<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+				</div>
+			</div>
+		</div>
+
+		<br><br><br>
+		<!--<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>-->
+		<script src="src/layui.js"></script>
+
+		<script>
+			//			var apiHost = "http://192.168.1.122:3000"
+			var apiHost = "http://120.25.205.164:3001"
+			var newsImgPath = ''
+			var newsId = GetQueryString('newsId')
+			layui.use(['form', 'laydate', 'upload'], function() {
+				var form = layui.form,
+					$ = layui.jquery,
+					upload = layui.upload,
+					laydate = layui.laydate;
+
+				//自定义验证规则
+				form.verify({
+					title: function(value) {
+						if(value.length < 1) {
+							return '标题也太短了吧';
+						}
+					},
+					pass: [/(.+){6,12}$/, '密码必须6到12位'],
+					money: [
+						/^\d+\.\b\d{2}\b$/, '金额必须为小数保留两位'
+					]
+				});
+
+				//监听提交
+				form.on('submit(*)', function(data) {
+					if(!newsImgPath) {
+						layer.msg('未上传图片');
+						return false;
+					}
+
+					var field = data.field
+					if(newsId) {
+						$.post({
+							url: apiHost + "/updateNews",
+							data: {
+								'id': newsId,
+								'title': field.title,
+								'img': newsImgPath,
+								'time': field.newsDate,
+								'department': field.department,
+								'intro': field.intro
+							},
+							success: function(data) {
+								layer.msg('新闻修改成功');
+								//延迟500ms关闭当前iframe  还需要告诉父级刷新
+								setTimeout(function() {
+									var index = parent.layer.getFrameIndex(window.name);
+									//先得到当前iframe层的索引
+									parent.layer.close(index); //再执行关闭    
+								}, 500)
+
+							}
+
+						});
+						return;
+					}
+					$.ajax({
+						type: "POST",
+						url: apiHost + "/addNews",
+						data: {
+							'title': field.title,
+							'img': newsImgPath,
+							'time': field.newsDate,
+							'department': field.department,
+							'intro': field.intro
+						},
+						async: true,
+						success: function(data) {
+							layer.msg('新闻添加成功');
+							//延迟500ms关闭当前iframe  还需要告诉父级刷新
+							setTimeout(function() {
+								var index = parent.layer.getFrameIndex(window.name);
+								//先得到当前iframe层的索引
+								parent.layer.close(index); //再执行关闭    
+							}, 500)
+
+						}
+
+					});
+
+					return false;
+				});
+
+				//日期
+
+				laydate.render({
+					elem: '#newsDate',
+					isInitValue: false,
+					format: 'yyyy-MM-dd',
+					ready: function(date) {
+
+					},
+					done: function(value, date, endDate) {
+
+					}
+				});
+
+				//上传
+				var uploadInst = upload.render({
+					elem: '#newsImgUpload',
+					url: apiHost + '/uploadImg',
+					size: 300 //限制文件大小，单位 KB
+						,
+					accept: 'file',
+					fileAccept: 'image/*',
+					exts: "jpg|png|gif|bmp|jpeg|pdf",
+					data: { //额外参数
+
+					},
+					before: function(obj) {
+						//预读本地文件示例，不支持ie8
+						obj.preview(function(index, file, result) {
+							$('#newsImgPreview').attr('src', result); //图片链接（base64）
+						});
+					},
+					done: function(res) {
+
+						//如果上传失败
+						if(res.code != 200) {
+							return layer.msg('上传失败');
+						}
+						//上传成功
+						layer.msg('上传成功');
+						$('#newsImgText').html('') //上传成功 清除可能出现过的失败状态
+						newsImgPath = res.data.allPath
+					},
+					error: function() {
+						//演示失败状态，并实现重传
+						var demoText = $('#newsImgError');
+						demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini newsImgError-reload">重试</a>');
+						demoText.find('.newsImgError-reload').on('click', function() {
+							uploadInst.upload();
+						});
+					}
+				});
+
+				//如果url上面有newsId 则表示是来自编辑状态，需要获取数据填数据，以及之后是调用修改数据的接口
+				if(newsId) {
+					$.get({
+						url: apiHost + '/findAll?id=' + newsId,
+						success: function(data) {
+							let newsData = data.data
+							console.log(newsData)
+							$('input[name="title"]').val(newsData.title)
+							$('input[name="newsDate"]').val(newsData.time.substr(0, 10))
+							$('.layui-textarea').val(newsData.intro)
+							$('.layui-upload-img').attr('src', newsData.img)
+							$('.news-department option[value=' + newsData.department + ']')[0].selected = true
+							form.render('select');
+							newsImgPath = newsData.img
+
+						}
+					})
+
+				}
+
+			});
+
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r !== null) return unescape(r[2]);
+				return null;
+			};
+		</script>
+
+	</body>
+
+</html>

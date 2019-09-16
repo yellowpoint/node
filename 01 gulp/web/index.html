@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>构建</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="src/css/layui.css">
+
+		<style>
+			body {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h1>贷款项目</h1>
+		<br />
+		<button class="layui-btn" data-url='http://120.25.205.164:3000/test'>测试</button>
+		<br><br><br>
+		<button class="layui-btn" data-url='http://120.25.205.164:3000/gulpAndDeployTest'>构建与上传测试</button>
+		<br><br><br>
+
+		<button class="layui-btn layui-btn-danger" data-url='http://120.25.205.164:3000/deployFile'>上传生产</button>
+		<br><br><br>
+		<button class="layui-btn layui-btn-danger" data-url='http://120.25.205.164:3000/gulpAndDeploy'>构建与上传生产</button>
+		<br><br><br>
+
+		<h1>diy项目</h1>
+		<br />
+		<button class="layui-btn" data-url='http://120.25.205.164:3000/gulpAndDeployTest?project=diy'>diy构建与上传测试</button>
+		<br><br><br>
+		<button class="layui-btn layui-btn-danger" data-url='http://120.25.205.164:3000/gulpAndDeploy?project=diy'>diy构建与上传生产</button>
+		<script src="src/layui.js"></script>
+
+		<script>
+			layui.use('layer', function() {
+				var $ = layui.jquery,
+					layer = layui.layer; //独立版的layer无需执行这一句
+
+				$('.layui-btn-danger').on('click', function() {
+					var that = $(this)
+					layer.confirm('此操作会上传生产环境，请确认', {
+						btn: ['确认', '取消'] //按钮
+					}, function() {
+						getAjax(that.attr('data-url'))
+						layer.msg('确认了', {
+							time: 500
+						})
+					}, function() {
+						layer.msg('取消了', {
+							time: 500
+						});
+					});
+				});
+
+				$('.layui-btn:not(.layui-btn-danger)').click(function() {
+					getAjax($(this).attr('data-url'))
+				})
+
+				function getAjax(url) {
+					var load = layer.load(4, {
+						content: '<br><br> &nbsp;&nbsp;操作中',
+						shade: 0.3,
+					})
+					$.ajax({
+						type: "GET",
+						url: url,
+						async: true,
+						success: function() {
+							layer.alert('操作成功');
+						},
+						error: function() {
+							layer.alert('操作失败');
+						},
+						complete: function() {
+							layer.close(load)
+						}
+					});
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

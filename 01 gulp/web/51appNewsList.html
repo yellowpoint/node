@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>51app新闻列表</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="src/css/layui.css">
+
+		<style>
+			body {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<table id="news" lay-data="{id: 'news'}" lay-filter="news2"></table>
+		<button class="layui-btn demo" data-type="test6">添加新闻</button>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+		<script src="src/layui.js"></script>
+
+		<script>
+			//			var apiHost = "http://192.168.1.122:3000"
+			var apiHost = "http://120.25.205.164:3001"
+			layui.use(['table', 'layer'], function() {
+				var table = layui.table;
+
+				//第一个实例
+				table.render({
+					elem: '#news',
+					height: 315,
+					url: apiHost + '/findAll' //数据接口
+						,
+					page: true //开启分页
+						,
+					cols: [
+						[{
+								field: 'id',
+								title: 'ID',
+								width: 80,
+								sort: true,
+								fixed: 'left'
+							},
+							{
+								field: 'title',
+								title: '标题',
+								width: 200
+							}, {
+								field: 'time',
+								title: '日期',
+								width: 200,
+								sort: true
+							}, {
+								field: 'department',
+								title: '部门',
+								width: 100
+							}, {
+								field: 'intro',
+								title: '简介',
+								width: 300
+							}, {
+								field: '',
+								title: '操作',
+								width: 300,
+								toolbar: '#handleNews'
+							}
+						]
+					]
+				});
+
+				var $ = layui.jquery,
+					layer = layui.layer; //独立版的layer无需执行这一句
+
+				//触发事件
+				var active = {
+					test6: function() {
+						layer.open({
+							type: 2,
+							content: '51appAddNews.html',
+							area: ['700px', '500px'],
+							maxmin: true,
+							cancel: function() {
+								console.log('关闭了')
+							},
+							end: function() {
+								//iframe自己关闭的时候会触发
+								console.log('销毁了')
+								//	location.reload()
+								table.reload('news');
+							}
+						});
+					}
+
+				}
+				$('.demo').on('click', function() {
+					var type = $(this).data('type');
+					active[type] ? active[type].call(this) : '';
+				});
+
+				//监听工具条
+				table.on('tool(news2)', function(obj) {
+					var data = obj.data; //获得当前行数据
+					var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+					var tr = obj.tr; //获得当前行 tr 的DOM对象
+					var newsId = data.id
+					if(layEvent === 'del') { //删除
+
+						layer.confirm('真的删除么？', function(index) {
+
+							$.post({
+								url: apiHost + '/deleteNews',
+
+								data: {
+									id: newsId
+								},
+								success: function(data) {
+									layer.msg('删除成功', {
+										time: 500
+									})
+								},
+								error: function() {
+									layer.msg('删除失败')
+								},
+								complete: function() {
+									layer.close(index);
+									table.reload('news');
+								}
+
+							})
+
+						});
+					} else if(layEvent === 'edit') { //编辑
+						layer.open({
+							type: 2,
+							content: '51appAddNews.html?newsId='+newsId,
+							area: ['700px', '500px'],
+							maxmin: true,
+							cancel: function() {
+							
+							},
+							end: function() {
+								
+								table.reload('news');
+							}
+						});
+					}
+				});
+
+			});
+		</script>
+		<script type="text/html" id="handleNews">
+			<!--<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>-->
+			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+		</script>
+
+	</body>
+
+</html>
