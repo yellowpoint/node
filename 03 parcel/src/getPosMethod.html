@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>免费领取POS机</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/creditLoan.css" />
+	<link rel="stylesheet" href="css/getPos.css" />
+	
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+	body{
+		background-color: rgb(254,213,47) !important;
+	}
+	.btn-submit{
+		width: 5.32rem;
+		height: 1.2rem;
+		margin: 0 auto;
+		margin-top: .66rem;
+		background: url(./images/pos/getPos/btn-order.png) no-repeat;
+		background-size: 100%;
+	}
+	.date_grid,.tooth{
+		font-weight: normal;
+	}
+	</style>
+</head>
+<body class="getPosMethod body-loading">
+	<div class="body-main">
+		<div class="selectMethod">
+			<div class="title">
+				<p class="notice">提交成功</p>
+				<p>请选择领取POS机的方式</p>
+			</div>
+			<div class="selectArea">
+				<div class="method">
+					<input name="method" type="radio" value="0" id="radio1"/>
+					<label for="radio1">在线顾问办理，预收59元(包邮)，激活使用后，返还59元；</label>
+				</div>
+				<div class="method">
+					<input name="method" type="radio" value="1" id="radio2"/>
+					<label for="radio2">客户经理，上门免费办理；</label>
+					<div class="method-time">
+						<div class="date">
+							<span>上门日期</span>
+							<i id="myWeek"></i>
+							<input type="" name="myDate" id="myDate" value="" placeholder="请选择 >"/>
+						</div>
+						<div class="date">
+							<span>上门时间</span>
+							<select name="myTime">
+								<option value="0">请选择  ></option>
+								<option value="09:00-11:00" id="time1">09:00-11:00</option>
+								<option value="11:00-13:00" id="time2">11:00-13:00</option>
+								<option value="13:00-15:00" id="time3">13:00-15:00</option>
+								<option value="15:00-17:00" id="time4">15:00-17:00</option>
+								<option value="17:00-19:00" id="time5">17:00-19:00</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btn-submit" id="toSubmit"></div>
+	<p class="contact" style="text-align: center;margin-top: .24rem;">财务顾问 电话/微信/QQ：<a id="mobile" href="tel:18126465435">18126465435</a></p>
+	<div class="mask"></div>
+	<div class="submitSuccess zoomIn animated">
+		<p>工作人员将在24小时内与您联系<br/>请保持电话畅通</p>
+		<div id="goConfirm" class="goConfirm"></div>
+	</div>
+	<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/datePicker.min.js"></script>
+	
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		mui.init();
+		var screenHeight = $(window).height();
+		$('.getPosMethod').eq(0).css({"height": screenHeight});
+		
+		var wxPhone = ['18126465435', '18126465429', '18126467037']
+
+		//刷卡机填写资料后，出现的微信号码，随机出现wxPhone这些号码中的一个
+		var wxPhoneIndex = Math.floor(Math.random() * (wxPhone.length - 1 - 0 + 1) + 0)
+		$('#mobile').text(wxPhone[wxPhoneIndex])
+		$('#mobile').attr('href','tel:'+wxPhone[wxPhoneIndex])
+		
+		//单选方法事件
+		$('input[name=method]').eq(0).click(function(){
+			$('.method-time').eq(0).fadeOut()
+		})
+		$('input[name=method]').eq(1).click(function(){
+			$('.method-time').eq(0).fadeIn()
+		})
+		
+		//初始化日期选择
+		var myDate = new Date();
+		var myYear = myDate.getFullYear(); //获取完整的年份(4位,1970)
+		var myMonth = myDate.getMonth()+1; //获取当前月份(0-11,0代表1月)
+		var myDay = myDate.getDate(); //获取当前日(1-31)
+		var myWeek = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+		var myHour = myDate.getHours();
+		//根据当前小时数，动态判断下拉框的可选与不可选
+		checkHours ()
+		function checkHours () {
+			if(myHour>=9){
+				$('#time1').hide()
+			}
+			if(myHour>=11){
+				$('#time1').hide()
+				$('#time2').hide()
+			}
+			if(myHour>=13){
+				$('#time1').hide()
+				$('#time2').hide()
+				$('#time3').hide()
+			}
+			if(myHour>=15){
+				$('#time1').hide()
+				$('#time2').hide()
+				$('#time3').hide()
+				$('#time4').hide()
+			}
+			//此时只能预约第二天
+			if(myHour>=17){
+				$('#time1').show()
+				$('#time2').show()
+				$('#time3').show()
+				$('#time4').show()
+				$('#time5').show()
+				myDay++
+			}	
+		}
+		
+		//传入今天的日期
+		var today = myYear + '-' + myMonth + '-' + myDay;
+		//最终确认的时间
+		var finalDate;
+		var finalTime;
+		var calendar = new datePicker();
+		calendar.init({
+			'trigger': '#myDate', /*按钮选择器，用于触发弹出插件*/
+			'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+			'minDate': today,/*最小日期*/
+			'maxDate':'2100-12-31',/*最大日期*/
+			'onSubmit':function(){/*确认时触发事件*/
+				finalDate = calendar.value;
+				//大于今天的都可以选择
+				if(finalDate.split('-')[0] > myYear||finalDate.split('-')[1] > myMonth||finalDate.split('-')[2] > myDay){
+					$('#time1').show()
+					$('#time2').show()
+					$('#time3').show()
+					$('#time4').show()
+					$('#time5').show()
+				}else{
+					checkHours ()
+				}
+				//判断选中后为星期几
+				$('#myWeek').text( "星期"+"天一二三四五六 ".charAt(new Date(finalDate).getDay()));   
+			},
+			'onClose':function(){/*取消时触发事件*/
+			}
+		})
+		
+		//防止弹出输入框
+		$('#myDate').on("focus",function(e){
+    		$(this).blur();
+		});
+		
+		$('select[name=myTime]').change(function(){
+			console.log($(this).val())
+			if($(this).val() == '0'){
+				$(this).removeClass('select-active')
+			}else{
+				finalTime = $(this).val()
+				$(this).addClass('select-active')
+			}
+		})
+		
+		//立即提交资料
+		$('#toSubmit').click(function(){
+			var myMethod = $('input[name=method]:checked').val();
+	
+			var getPosInfo = JSON.parse(getCookie('getPosInfo'))
+//			var getPosInfo = {}
+			if(!$('input[name=method]:checked').length){
+				mui.toast('请选择领取方式')
+				return false
+			}
+			//选择上门再判断日期
+			if(myMethod == 1){
+				if($('input[name=myDate]').val() == ''){
+					mui.toast('请选择上门日期')
+					return false
+				}
+				if($('select[name=myTime]').val() == 0){
+					mui.toast('请选择上门时间')
+					return false
+				}
+			}
+			//获取上个页面的数据
+			var isSubmit = true;
+			if(getPosInfo != undefined||getPosInfo != null){
+				getPosInfo.type = myMethod
+				getPosInfo.date = finalDate
+				getPosInfo.time = finalTime
+				var toData = JSON.stringify(getPosInfo)
+				if(isSubmit){
+					isSubmit = false;
+					ajaxPost(
+						'https://api.51app.cn/loanapi/user/pos',
+						{data: toData},
+						function(res){
+							if(res.code == 200){
+								setTimeout(function(){
+									isSubmit = true
+								},500)
+								console.log(res)
+								$('.mask').show()
+								$('.submitSuccess').show()
+							}else{
+								mui.toast(res.data)
+							}
+							
+						},
+						function() {
+							
+						}
+					)
+				}
+			
+			}
+			
+		})
+		
+		$('#goConfirm').click(function() {
+			window.location.href = 'index.html'
+			$('.mask').hide()
+			$('.submitSuccess').hide()
+		})
+		
+		
+		
+	</script>
+</body>
+</html>
