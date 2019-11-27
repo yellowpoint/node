@@ -1,0 +1,6 @@
+::1 -- Wed Nov 27 2019 18:09:01 GMT+0800 (GMT+08:00) -- GET -- / -- 6ms
+::1 -- Wed Nov 27 2019 18:09:01 GMT+0800 (GMT+08:00) -- GET -- /favicon.ico -- 5ms
+::1 -- Wed Nov 27 2019 18:09:14 GMT+0800 (GMT+08:00) -- GET -- /aaa -- 8ms
+::1 -- Wed Nov 27 2019 18:09:14 GMT+0800 (GMT+08:00) -- GET -- /favicon.ico -- 5ms
+::1 -- Wed Nov 27 2019 18:18:24 GMT+0800 (GMT+08:00) -- GET -- /aaa -- 24ms
+::1 -- Wed Nov 27 2019 18:18:24 GMT+0800 (GMT+08:00) -- GET -- /favicon.ico -- 7ms
