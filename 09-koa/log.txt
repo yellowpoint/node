@@ -4,3 +4,15 @@
 ::1 -- Wed Nov 27 2019 18:09:14 GMT+0800 (GMT+08:00) -- GET -- /favicon.ico -- 5ms
 ::1 -- Wed Nov 27 2019 18:18:24 GMT+0800 (GMT+08:00) -- GET -- /aaa -- 24ms
 ::1 -- Wed Nov 27 2019 18:18:24 GMT+0800 (GMT+08:00) -- GET -- /favicon.ico -- 7ms
+::1 -- Thu Nov 28 2019 14:48:30 GMT+0800 (GMT+08:00) -- GET -- /game -- 282ms
+sync
+::1 -- Thu Nov 28 2019 14:49:38 GMT+0800 (GMT+08:00) -- GET -- /game -- 393ms
+::1 -- Thu Nov 28 2019 14:49:47 GMT+0800 (GMT+08:00) -- GET -- /game -- 197ms
+::1 -- Thu Nov 28 2019 14:49:48 GMT+0800 (GMT+08:00) -- GET -- /game -- 230ms
+::1 -- Thu Nov 28 2019 14:49:50 GMT+0800 (GMT+08:00) -- GET -- /game -- 197ms
+async
+::1 -- Thu Nov 28 2019 14:50:33 GMT+0800 (GMT+08:00) -- GET -- /game -- 240ms
+::1 -- Thu Nov 28 2019 14:50:41 GMT+0800 (GMT+08:00) -- GET -- /game -- 127ms
+::1 -- Thu Nov 28 2019 14:50:44 GMT+0800 (GMT+08:00) -- GET -- /game -- 115ms
+::1 -- Thu Nov 28 2019 14:50:46 GMT+0800 (GMT+08:00) -- GET -- /game -- 105ms
+::1 -- Thu Nov 28 2019 14:50:47 GMT+0800 (GMT+08:00) -- GET -- /game -- 100ms
