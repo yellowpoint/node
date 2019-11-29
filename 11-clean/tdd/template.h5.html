@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover">
+		<link rel="shortcut icon" href="/static/common/favicon.ico">
+		<title>
+			<%= htmlWebpackPlugin.options.title %>
+		</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
+			})
+		</script>
+		<link rel="stylesheet" href="<%= BASE_URL %>static/index.css" />
+	</head>
+	<body>
+		<noscript>
+			<strong>Please enable JavaScript to continue.</strong>
+		</noscript>
+		<div id="app"></div>
+		<!-- built files will be auto injected -->
+		<script src="https://js.fundebug.cn/fundebug.1.8.0.min.js" apikey="5faf9700471ce437b632d599f522a3df2420d68ad326264f4e691be21b452cde"
+		 silentVideo=false></script>
+		<script type="text/javascript">
+			if ("fundebug" in window) {
+				fundebug.filters = [{
+						message: /(getElementById\('imgUrl'\))|(getElementById\('desc'\))/
+					},
+					{
+						name: /^unhandledrejection$/,
+					}
+				]
+			}
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?ea93a4e31d310e1ea95de9f5e431ba4b";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+	</body>
+</html>

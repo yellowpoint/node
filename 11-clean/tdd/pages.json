@@ -1,0 +1,442 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "淘多多",
+				"app-plus": {
+					// "titleNView":{
+					// 	"backgroundColor":"#BF3627",
+					// 	"titleColor":"#fff"
+					// }
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/category/category",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/iwant/iwant",
+			"style": {
+				"navigationBarTitleText": "我要赚",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/product/product",
+			"style": {
+				"navigationBarTitleText": "详情展示",
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"type": "transparent"
+					}
+
+				}
+			}
+		},
+		{
+			"path": "pages/index/buttonNav",
+			"style": {
+				"navigationBarTitleText": "淘多多",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/index/freeToBuy",
+			"style": {
+				"navigationBarTitleText": "0元购"
+			}
+		},
+		{
+			"path": "pages/index/freeToBuyRule",
+			"style": {
+				"navigationBarTitleText": "0元购",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/index/freeSignIn",
+			"style": {
+				"navigationBarTitleText": "0元购",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/set/set",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/public/login",
+			"style": {
+				"navigationBarTitleText": "淘多多-登录",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/earning/earning",
+			"style": {
+				"navigationBarTitleText": "我的收益",
+				"app-plus": {
+					"titleNView": {
+						"button": [{
+							"type": "back"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/earning/binAlipay",
+			"style": {
+				"navigationBarTitleText": "绑定支付宝"
+			}
+		},
+		{
+			"path": "pages/earning/getMoney",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		},
+		{
+			"path": "pages/earning/getMoneyResult",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		},
+		{
+			"path": "pages/user/bindPhone",
+			"style": {
+				"navigationBarTitleText": "绑定手机"
+			}
+		},
+		{
+			"path": "pages/user/browsHistory",
+			"style": {
+				"navigationBarTitleText": "浏览记录",
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"titleColor": "rgba(51,51,51,1)",
+						"titleSize": "16",
+						"buttons": [{
+							"text": "清空",
+							"fontSize": "14",
+							"color": "rgba(51,51,51,1)",
+							"width": "60upx",
+							"background": "#ffffff"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/user/myCollection",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"titleColor": "rgba(51,51,51,1)",
+						"titleSize": "16",
+						"buttons": [{
+							"text": "管理",
+							"fontSize": "14",
+							"color": "rgba(51,51,51,1)",
+							"width": "60upx",
+							"background": "#ffffff"
+						}]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/user/aboutUs",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		}, {
+			"path": "pages/user/policy",
+			"style": {
+				"navigationBarTitleText": "淘多多",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/user/cpa",
+			"style": {
+				"navigationBarTitleText": "新手攻略",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/product/codeJump",
+			"style": {
+				"navigationBarTitleText": "二维码",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/user/contactUs",
+			"style": {
+				"navigationBarTitleText": "联系我们"
+			}
+		}
+	    ,{
+            "path" : "pages/forIos/fansOrder",
+           "style": {
+           	"navigationBarTitleText": "好友推广",
+           	"app-plus": {
+           		"titleNView": false
+           	}
+           }
+		}
+        ,{
+            "path" : "pages/forIos/promote",
+            "style": {
+            	"navigationBarTitleText": "升级合伙人",
+            	"app-plus": {
+            		"titleNView": false
+            	}
+            }
+        },{
+            "path" : "pages/forIos/alipay",
+            "style": {
+            	"navigationBarTitleText": "支付宝",
+            	"app-plus": {
+            		"titleNView": false
+            	}
+            }
+        }
+        ,{
+            "path" : "pages/forIos/downLoadApp",
+		   "style": {
+			"navigationBarTitleText": "下载app",
+			"app-plus": {
+				"titleNView": false
+			}
+		   }
+        },{
+            "path" : "pages/search/channlType",
+		   "style": {
+				"navigationBarTitleText": "搜索"
+			   }
+        }
+        ,{
+            "path" : "pages/index/pindd",
+            "style": {
+					"navigationBarTitleText": "淘多多",
+					"app-plus": {
+						"titleNView": false
+					}
+				   }
+        }
+        ,{
+            "path" : "pages/forIos/newVersion",
+            "style": {
+            		"navigationBarTitleText": "新版本",
+            		"app-plus": {
+            			"titleNView": false
+            		}
+            	   }
+        },{
+            "path" : "pages/forIos/doubleT",
+            "style": {
+            		"navigationBarTitleText": "活动会场",
+            		"app-plus": {
+            			"titleNView": false
+            		}
+            	   }
+        },{
+            "path" : "pages/forIos/activeTeen",
+            "style": {
+            		"navigationBarTitleText": "双11尖货预售",
+            		"app-plus": {
+            			"titleNView": false
+            		}
+            	   }
+        },{
+            "path" : "pages/forIos/forIos/activeTeen",
+            "style": {
+            		"navigationBarTitleText": "双十一邀请好友",
+            		"app-plus": {
+            			"titleNView": false
+            		}
+            	   }
+        },{
+            "path" : "pages/cashBonus/upGradeDelegat",
+            "style": {
+            		"navigationBarTitleText": "升级团长",
+            		"app-plus": {
+            			"titleNView": false
+            		}
+            	   }
+        },{
+            "path" : "pages/cashBonus/firstPacket",
+           "style": {
+           	"navigationBarTitleText": "现金红包",
+           	"app-plus": {
+           		"bounce": "none",
+           		"titleNView": {
+           			"type": "transparent"
+           		}
+           
+           	}
+           }
+        },{
+            "path" : "pages/cashBonus/secondPacket",
+           "style": {
+           	"navigationBarTitleText": "现金红包",
+           	"app-plus": {
+           		"bounce": "none",
+           		"titleNView": {
+           			"type": "transparent"
+           		}
+           
+           	}
+           }
+        },{
+            "path" : "pages/cashBonus/invite",
+           "style": {
+           	"navigationBarTitleText": "邀请页",
+           	"app-plus": {
+           		"titleNView": false
+           
+           	}
+           }
+        },{
+            "path" : "pages/cashBonus/redList",
+          "style": {
+          		"navigationBarTitleText": "红包列表",
+          		"app-plus": {
+          			"titleNView": true
+          		}
+          	   }
+        },{
+            "path" : "pages/cashBonus/rules",
+          "style": {
+          		"navigationBarTitleText": "规则",
+          		"app-plus": {
+          			"titleNView": false
+          		}
+          	   }
+        },{
+            "path" : "pages/activity/blackFive",
+          "style": {
+          		"navigationBarTitleText": "黑五",
+          		"app-plus": {
+          			"titleNView": false
+          		}
+          	   }
+        },{
+            "path" : "pages/activity/blackFivePrepaid",
+          "style": {
+          		"navigationBarTitleText": "黑五",
+          		"app-plus": {
+          			"titleNView": false
+          		}
+          	   }
+        },{
+            "path" : "pages/activity/taobao",
+          "style": {
+          		"navigationBarTitleText": "淘宝活动",
+          		"app-plus": {
+          			"titleNView": false
+          		}
+          	   }
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#f8f8f8"
+	},
+	"tabBar": {
+		"color": "#C0C4CC",
+		"selectedColor": "#226DE7",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabbar/index.png",
+				"selectedIconPath": "static/tabbar/index_act.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/category/category",
+				"iconPath": "static/tabbar/category.png",
+				"selectedIconPath": "static/tabbar/category_act.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/iwant/iwant",
+				"iconPath": "static/tabbar/iwant.png",
+				"selectedIconPath": "static/tabbar/iwant_act.png",
+				"text": "我要赚"
+			},
+			{
+				"pagePath": "pages/search/search",
+				"iconPath": "static/tabbar/search.png",
+				"selectedIconPath": "static/tabbar/search_act.png",
+				"text": "搜索"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/tabbar/my.png",
+				"selectedIconPath": "static/tabbar/my_act.png",
+				"text": "我的"
+			}
+		]
+	}
+}

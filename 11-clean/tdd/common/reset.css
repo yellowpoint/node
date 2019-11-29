@@ -1,0 +1,196 @@
+html,
+body,
+div,
+header,
+article,
+footer,
+section,
+aside,
+nav,
+hgroup,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+p,
+a,
+span,
+i,
+em,
+strong,
+b,
+img,
+input,
+textarea {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+/*初始化标题加粗*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+	font-weight: normal
+}
+
+a,
+img,
+input {
+	border: none 0;
+	text-decoration: none;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus,
+input:focus {
+	outline: 0 none;
+}
+
+
+/*获取焦点时，不显示外框*/
+
+li {
+	list-style: none;
+}
+
+i,
+em,
+cite {
+	font-style: normal;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+textarea,
+li {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/*消除点击高光*/
+
+textarea,
+button {
+	resize: none;
+	font-size: 13px;
+	padding: 0;
+	outline: none 0;
+	border: none 0;
+}
+
+
+/*去掉火狐和谷歌浏览器的Textarea改变尺寸大小功能*/
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+textarea {
+	-webkit-appearance: none;
+	line-height: normal；
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #ddd;
+	font-size: 26upx;
+}
+
+
+/*定义placeholder字体样式*/
+
+body {
+	/* background-color: #f7f7f7; */
+	color: #333;
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+	font-size: 13px;
+	/*滚动顺滑*/
+	-webkit-overflow-scrolling: touch;
+	/*取消ios上链接长按出现的半透明黑色遮罩*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	user-select: auto;
+}
+
+/*公共样式开始*/
+
+/*清除浮动*/
+
+.clearfix {
+	clear: both;
+}
+
+.clearfix::after,
+.clearfix::before {
+	content: " ";
+	display: table;
+}
+
+.clearfix::after {
+	clear: both;
+}
+
+/*公共样式结束*/
+
+/* 适配iphoneX 
+
+uni会自动给有tabbar的页面加上，故有些地方无法统一，需要注意
+.uni-app--showtabbar uni-page-wrapper{
+	height: calc(100% - 50px);
+    height: calc(100% - 50px - constant(safe-area-inset-bottom));
+    height: calc(100% - 50px - env(safe-area-inset-bottom));
+}
+
+*/
+/* https://aotu.io/notes/2017/11/27/iphonex/index.html */
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+
+	body {
+		/* body默认高度100%，iphonex上会让i4加上底部，
+		故将其高度设置为100vh，但其100vh一般大于100%，可能对布局有影响，需注意 
+		加了固定高度，padding就没作用了
+		*/
+	    position: relative;
+		height: 100vh;
+	}
+
+	uni-tabbar {
+		padding-bottom: constant(safe-area-inset-bottom) !important;
+		padding-bottom: env(safe-area-inset-bottom) !important;
+	}
+
+	.payFooter {
+		height: calc(98upx + constant(safe-area-inset-bottom)) !important;
+		height: calc(98upx + env(safe-area-inset-bottom)) !important;
+		padding-bottom: constant(safe-area-inset-bottom) !important;
+		padding-bottom: env(safe-area-inset-bottom) !important;
+	}
+}
