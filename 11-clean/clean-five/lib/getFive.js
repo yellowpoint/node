@@ -1,6 +1,8 @@
-var fs = require('fs');
-var path = require('path');
-var config = require('./config');
+const fs = require('fs');
+const path = require('path');
+const Util = require('./util');
+console.log('Util',Util)
+const config = Util; //为啥不用getConfig，是因为那个return么
 
 //解析需要遍历的文件夹，我这以E盘根目录为例
 // var filePath = process.argv[2];
@@ -73,8 +75,8 @@ const getFiveObj = {
     const time_start = Date.now()
     await getFive(filePath)
     const time_end = Date.now()
-    console.log('获取未使用文件个数:', imgBox.length)
-    console.log('获取未使用文件耗时:', time_end - time_start + 'ms')
+    console.log('获取需处理的文件个数:', imgBox.length)
+    console.log('获取需处理的文件耗时:', time_end - time_start + 'ms')
     return imgBox
   }
 }

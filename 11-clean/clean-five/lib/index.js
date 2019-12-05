@@ -1,8 +1,8 @@
-#! /usr/bin/env node
-console.log('indexxxx')
 var path = require("path");
 var fs = require("fs");
-var config = require('./config');
+const Util = require('./util');
+const config = Util.getConfig();
+console.log('config', config)
 const {
   imgDir,
   filePath
@@ -46,26 +46,28 @@ function concatFiles() {
   fileDisplaySync(filePath);
 
 }
-concatFiles()
-console.log('所有文件合并后的长度：', allFiles.length)
 
 function check(item) {
   let exc = new RegExp(item);
   return exc.test(allFiles)
 }
 
-(async () => {
-
-  const imgArr = await getImg()
-  console.log('imgArr[0]', imgArr[0])
-  const time_start = Date.now()
-  imgArr.forEach(item => {
-    if (!check(item)) {
-      noImg.push(item)
-    }
-  })
-  const time_end = Date.now()
-  console.log('比对耗时:', time_end - time_start + 'ms')
-  console.log('找到未使用文件个数：', noImg.length)
-  fs.appendFileSync('./noImg.txt', JSON.stringify(noImg) + '\n')
-})()
+const ex = {
+  async start() {
+    concatFiles()
+    console.log('所有文件合并后的长度：', allFiles.length)
+    const imgArr = await getImg()
+    console.log('imgArr[0]', imgArr[0])
+    const time_start = Date.now()
+    imgArr.forEach(item => {
+      if (!check(item)) {
+        noImg.push(item)
+      }
+    })
+    const time_end = Date.now()
+    console.log('比对耗时:', time_end - time_start + 'ms')
+    console.log('找到未使用文件个数：', noImg.length)
+    fs.appendFileSync('./noImg.txt', JSON.stringify(noImg) + '\n')
+  }
+}
+module.exports = ex

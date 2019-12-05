@@ -1,3 +1,5 @@
+const path = require('path');
+const fs = require('fs');
 const util = {
   /**
    * 获取 config文件
@@ -9,6 +11,7 @@ const util = {
       try {
         config = eval(fs.readFileSync(configPath, "utf-8"));
         callback && callback(config);
+        return config
       } catch (e) {
         console.log("读取clean-five.config.js文件失败");
       }

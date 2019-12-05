@@ -4,7 +4,8 @@
   "description": "清理未使用的文件",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "clean"
   },
   "bin": {
     "clean": "./bin/index.js"
