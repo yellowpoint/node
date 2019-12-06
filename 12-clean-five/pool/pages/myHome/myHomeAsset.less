@@ -1,0 +1,210 @@
+.mhati_mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 88;
+  background: rgba(0, 0, 0, 0.5);
+  @allCenter();
+  color: @color-default;
+  font-weight: bold;
+
+  .green {
+    color: #4aff5f;
+  }
+}
+
+.mhati_main {
+  padding: 0.3rem;
+  border-bottom: 0.1rem solid #f6f9fc;
+  @font-s();
+
+  .mhati_main_nav {
+    position: relative;
+    width: 2.5rem;
+    height: 0.36rem;
+    margin: 0 auto .4rem;
+    background: rgba(239, 243, 255, 1);
+    border-radius: 0.04rem;
+    @pointer();
+
+    .mhati_main_nav_itemBox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mhati_main_nav_item {
+      width: 50%;
+      @allCenter();
+      color: @color-main;
+      @font-s();
+      transition: color 0.26s;
+
+      &.act {
+        color: #fff;
+      }
+    }
+
+    .mhati_main_nav_act {
+      position: absolute;
+      top: 50%;
+      left: 0.06rem;
+      z-index: 1;
+      transform: translate3d(0, -50%, 0);
+      width: 1.2rem;
+      height: 0.28rem;
+      background: @color-main;
+      border-radius: 0.04rem;
+      transition: transform 0.26s;
+
+      &.act1 {
+        transform: translate3d(1.18rem, -50%, 0);
+      }
+    }
+  }
+
+  .mhati_main_body {
+
+    .mhati_main_body_item {
+      p {
+        @font-s();
+
+        span {
+          border-bottom: 1px solid @color-main;
+        }
+      }
+
+      .unAuth {
+        p {
+          margin-bottom: .1rem;
+          text-align: center;
+        }
+
+      }
+
+      .mhatimbi_main {
+        display: flex;
+        align-items: center;
+        height: 0.32rem;
+        margin: 0.22rem 0;
+
+        .mhatimbi_main_code {
+          width: 3.3rem;
+          height: 100%;
+          background: #eff3ff;
+          color: @color-main;
+          @allCenter();
+          @font-s();
+          font-weight: bold;
+
+        }
+
+        .mhatimbi_main_copy {
+          height: 100%;
+          margin-left: .1rem;
+          color: #999999;
+          @allCenter();
+          @pointer();
+          @active();
+        }
+      }
+    }
+  }
+
+  .longLabel {
+    width: 1.3rem;
+  }
+
+  .inputBox {
+    position: relative;
+    flex: 1;
+    display: flex;
+    height: 0.4rem;
+    border: 1px solid rgba(232, 232, 232, 1);
+
+    input {
+      flex: 1;
+      text-indent: 0.15rem;
+    }
+
+    .units {
+      width: 0.7rem;
+      height: 100%;
+      @font-m();
+      font-weight: 600;
+      color: @color-main;
+      @allCenter();
+    }
+  }
+
+  .mhati_main_balance,
+  .mhati_main_address,
+  .mhati_main_amount {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
+  }
+
+  .mhati_main_password {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    .inputBox {
+      margin-right: 0.3rem;
+    }
+
+    .toSetPwd {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      @allCenter();
+      background: @color-main;
+      color: @color-default;
+      cursor: pointer;
+
+    }
+  }
+
+  .smallConfirm {
+    width: 0.84rem;
+    height: 0.4rem;
+    background: @color-main;
+    font-size: 0.14rem;
+    color: @color-default;
+    @allCenter();
+    border-radius: 0.2rem;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+  .mhati_main_tips {
+    color: #999;
+    @font-s();
+    margin: 0.14rem 0;
+  }
+}
+
+.mhati_tips {
+  padding: 0.2rem 0.32rem;
+
+  h3 {
+    margin-bottom: 0.2rem;
+    @font-l();
+    font-weight: bold;
+  }
+
+  .mhati_tips_main {
+    @font-s();
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+}

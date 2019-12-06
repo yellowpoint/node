@@ -1,39 +1,38 @@
 <!--该页介绍-->
 <template>
-	<div class="template"></div>
+  <div class="template"></div>
 </template>
 
 <script>
-	export default {
+export default {
 
-		name: '',
+  name: '',
 
-		mixins: [],
+  mixins: [],
 
-		components: {},
+  components: {},
 
-		props: {},
+  props: {},
 
-		data() {
-			return {
+  data() {
+    return {
 
-			}
-		},
+    };
+  },
 
-		computed: {},
+  computed: {},
 
-		watch: {},
+  watch: {},
 
-		created() {},
+  created() { },
 
-		mounted() {},
+  mounted() { },
 
-		destroyed() {},
+  destroyed() { },
 
-		methods: {}
-	}
+  methods: {},
+};
 </script>
 
 <style lang="less" scoped>
-
 </style>

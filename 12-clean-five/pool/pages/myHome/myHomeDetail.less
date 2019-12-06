@@ -1,0 +1,149 @@
+.myHomeDetail {
+  .myHomeAsset {
+    position: absolute;
+    top: .34rem;
+    right: .3rem;
+    z-index: 50;
+  }
+
+  .myHomeDetail_title {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 1.1rem;
+    padding: .3rem;
+    border-bottom: .01rem solid #eee;
+
+    .mhdt_name {
+      @font-xl();
+      font-weight: bold;
+
+      i {
+        margin-right: .2rem;
+        color: #666666;
+        font-size: .24rem;
+        font-weight: normal;
+      }
+    }
+
+    .mhdt_go {
+      position: absolute;
+      top: 50%;
+      right: .3rem;
+      transform: translateY(-50%);
+      color: @color-main;
+      @font-s();
+
+      i {
+        margin-left: .1rem;
+      }
+    }
+
+
+  }
+  
+  .myHomeDetail_data {
+    display: flex;
+    justify-content: space-between;
+    padding: .3rem;
+    border-bottom: 0.1rem solid #eee;
+    .mhdd_left,
+    .mhdd_right {
+      flex: 1;
+      height: 1.4rem;
+    }
+
+    .mhdd_left {
+      margin-right: .3rem;
+
+      .mhdd_left_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: .3rem;
+        @font-l();
+        font-weight: bold;
+
+        .scaleBox {
+          margin-left: .25rem;
+          color: @color-main;
+          @font-s();
+          font-weight: normal;
+          border: 1px solid @color-main;
+          padding: 0.04rem 0.08rem;
+          border-radius: 0.04rem;
+        }
+
+        .iconfont {
+          margin-right: .1rem;
+          color: #333;
+          font-size: .16rem;
+        }
+      }
+
+      .mhdd_left_body {
+        display: flex;
+
+        .mhdd_left_body_item {
+          width: 2rem;
+          @font-s();
+          color: #2e0707;
+
+          p {
+            margin-top: .15rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .mhdd_right {
+      .mhdd_right_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: .3rem;
+        @font-l();
+        font-weight: bold;
+
+        span {
+          margin: 0 .1rem;
+          color: #FF4A4A;
+          .fontNum;
+        }
+
+        .iconfont {
+          margin-right: .1rem;
+          color: #333;
+          font-size: .16rem;
+        }
+      }
+
+      .mhdd_right_body {
+        display: flex;
+        flex-direction: column;
+
+        .mhdd_right_body_item {
+          display: flex;
+          align-items: center;
+          margin-bottom: .2rem;
+          @font-s();
+          color: #666666;
+
+          .el-progress {
+            display: flex;
+            align-items: center;
+            width: 3.6rem;
+            height: .25rem;
+            margin-left: .36rem;
+          }
+
+        }
+      }
+    }
+
+  }
+  :last-child{
+    .myHomeDetail_data{
+      border: 0;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 module.exports = {
-  name: "test",
-  filePath: 'test',
-  imgDir: 'test/img',
+  filePath: 'pool',
+  imgDir: 'pool/assets/images',
   output: ""
 
 };
