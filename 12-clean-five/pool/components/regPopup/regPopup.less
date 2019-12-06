@@ -1,0 +1,263 @@
+.reg-popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    .contentWrap{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        // transform: translate(-50%, -51%);
+        margin-left: -3.2rem;
+        margin-top: -3.2rem;
+        width: 6.4rem;
+        background: @color-default;
+        border-radius: 0.1rem;
+        overflow: hidden;
+        @media (max-width: 768px) {
+            width: 90vw;
+            height: auto;
+            margin: 0;
+            transform: translate(-50%, -51%);
+        }
+        .headerTitle{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 0.96rem;
+            padding-left: 0.4rem;
+            background: @color-default url("~assets/images/register/awLogo.png") no-repeat;
+            background-size: contain;
+            .title{
+                color: #333;
+                @font-xl();
+                font-weight: bold;
+            }
+            .rightBox{
+                display: flex;
+                align-items: center;
+                height: 100%;
+                .toggleTypeIcon{
+                    width: 0.93rem;
+                    padding: 0 0.2rem;
+                    cursor: pointer;
+                    .pcIcon{
+                        width: 0.59rem;
+                        height: 0.54rem;
+                        margin: 0;
+                    }
+                    .phoneIcon{
+                        width: 0.46rem;
+                        height: 0.66rem;
+                        margin: 0;
+                    }
+                }
+                .callout {
+                    @allCenter();
+                    position: relative;
+                    width: 1.4rem;
+                    height: 0.36rem;
+                    color: #4698FF;
+                    @font-m();
+                    background-color: @color-default;
+                    border: 1px solid #4698FF;
+                    text-align: center;
+                    border-radius: 0.04rem;
+                    margin-right: 0.06rem;
+                    cursor: pointer;
+                }
+                .callout::before {
+                    content: "";
+                    position: absolute;
+                    top: 0.12rem; 
+                    right: -0.06rem;
+                    padding: 0.05rem;
+                    background-color: inherit;
+                    border: inherit;
+                    border-right: 0;
+                    border-bottom: 0;
+                    transform: rotate(135deg);
+                }
+                .logoIcon{
+                    font-size: 0.96rem;
+                    cursor: pointer;
+                }
+            }
+        }
+        .rightContent{
+            width: 100%;
+            padding: 0.3rem 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            @media (max-width: 768px) {
+                padding-top: 0.4rem;
+                padding-bottom: 1.2rem;
+            }
+            .formList{
+                width: 3.5rem;
+                @media (max-width: 768px) {
+                    width: 80%;
+                }
+                .inputBox{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    position: relative;
+                    border-bottom: 1px solid #E1E1E1;
+                    &.shortBox{
+                        width: auto;
+                        flex: 1;
+                    }
+                    .label{
+                        width: 1.0rem;
+                        @media (max-width: 768px) {
+                            font-size: 0.14rem;
+                        }
+                    }
+                    input{
+                        flex: 1;                    
+                        height: 0.4rem;
+                    }
+                    .forgetBox{
+                        display: flex;
+                        align-items: center;
+                        width: 1.0rem;
+                        cursor: pointer;
+                        color: #999;
+                        @font-s();
+                        position: absolute;
+                        right: 0;
+                        height: 100%;
+                        top: 0;
+                        justify-content: flex-end;
+                        @media (max-width: 768px) {
+                            width: 1.4rem;
+                        }
+                    }
+                }
+                .textMsgBox{
+                    height: 0.4rem;
+                    padding: 0.1rem 0;
+                    box-sizing: border-box;
+                    .textMsg{
+                        height: 0.2rem;
+                        @font-s();
+                        font-weight: 300;
+                        color: rgba(255,32,32,1);
+                        display: none;
+                    }
+                }
+                
+                .passwordBox{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #EDEDED; 
+                    .label{
+                        width: 1.0rem;
+                        @media (max-width: 768px) {
+                            font-size: 0.14rem;
+                        }
+                    }
+                    input{
+                        flex: 1;
+                        height: 0.38rem;
+                    }
+                    i{
+                        cursor: pointer;
+                    }
+                }
+                .goBtn{
+                    @allCenter();
+                    width: 3.20rem;
+                    height: 0.48rem;
+                    margin: 0.25rem auto;
+                    color: @color-default;
+                    cursor: pointer;
+                    @hover();
+                    background:linear-gradient(32deg,rgba(68,138,255,1),rgba(94,136,255,1));
+                    box-shadow:0px 3px 13px 0px rgba(56,80,185,0.65);
+                    border-radius: 0.24rem;
+                }
+                .quickRegister{
+                    text-align: center;
+                    span{
+                        color: #4698FF;
+                        @font-s();
+                        cursor: pointer;
+                    }
+                }
+                // .loginType{
+                //     margin-bottom: 0.2rem;
+                //     li{
+                //         width: 1.3rem;
+                //         height: 0.4rem;
+                //         float: left;
+                //         border-bottom: 0.04rem solid #999;
+                //         cursor: pointer;
+                //         @allCenter();
+                //         @media (max-width: 768px) {
+                //             width: 50%;
+                //             height: 0.8rem;
+                //         }
+                //     }
+                //     .active{
+                //         border-bottom: 0.04rem solid @color-main;
+                //     }
+                // }
+                .getCodeBox{
+                    width: 100%;
+                    height: 0.4rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .getCodeBtn{
+                        width: 1.0rem;
+                        height: 0.36rem;
+                        @font-s();
+                        color: @color-default;
+                        background: @color-main;
+                        cursor: pointer;
+                        @hover();
+                        border-radius: 0.06rem;
+                        margin-left: 0.04rem;
+                    }
+                    input{
+                        width: 1.4rem;
+                    }
+                }
+                .passwordLoginBox{
+                    position: relative;
+                }
+                .positionHeight{
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.4rem;
+                }
+                .toggle{
+                    width: 100%;
+                    text-align: center;
+                    color: @color-main;
+                    @allCenter();
+                    span{
+                        color: #4698FF;
+                        cursor: pointer;
+                    }
+                }
+                .toSignIn{
+                    color: #ff5252;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+}
