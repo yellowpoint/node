@@ -9,7 +9,7 @@ const util = {
     var config = {};
     if (fs.existsSync(configPath)) {
       try {
-        config = eval(fs.readFileSync(configPath, "utf-8"));
+        config = require(configPath);
         callback && callback(config);
         return config
       } catch (e) {

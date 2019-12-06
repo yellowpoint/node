@@ -2,7 +2,7 @@ var path = require("path");
 var fs = require("fs");
 const Util = require('./util');
 const config = Util.getConfig();
-console.log('config', config)
+// console.log('config', config)
 const {
   imgDir,
   filePath

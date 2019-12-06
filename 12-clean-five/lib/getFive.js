@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const Util = require('./util');
-console.log('Util',Util)
-const config = Util; //为啥不用getConfig，是因为那个return么
+// console.log('Util',Util)
+const config = Util.getConfig(); //为啥不用getConfig，是因为那个return么
 
 //解析需要遍历的文件夹，我这以E盘根目录为例
 // var filePath = process.argv[2];
