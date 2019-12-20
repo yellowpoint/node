@@ -1,4 +1,0 @@
-["/aaa/aaa.jpg","/aaa/c.txt","/aaa/c/bbb.jpg","/aaa/c/bbbb.jpg","/aaa/b/ba/ba1.jpg","/aaa/b/bb/ba1.jpg"]
-["/borrowingTreasure/bigBg.jpg","/common/awLogo.png","/common/back.png","/common/error.jpg","/common/success.jpg","/common/warning.jpg","/common/wxShareTips.png","/home/advantageBG.jpg","/home/banner2.jpg","/home/eco.png","/home/text1.png","/lease/bg.jpg","/lease/bg.png","/lease/hoverbg.png","/observer/headerBG.png","/register/register.jpg"]
-["/common/back.png","/common/error.jpg","/common/success.jpg","/common/warning.jpg","/common/Wechat2.png","/common/wxShareTips.png","/register/register.jpg"]
-["/common/back.png","/common/error.jpg","/common/success.jpg","/common/warning.jpg","/common/Wechat2.png","/common/wxShareTips.png","/register/register.jpg"]
