@@ -1,11 +1,12 @@
 {
   "name": "clean-five",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "清理未使用的文件",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "clean"
+    "clean": "clean",
+    "trypublish": "npm publish || true"
   },
   "bin": {
     "clean": "./bin/index.js"
