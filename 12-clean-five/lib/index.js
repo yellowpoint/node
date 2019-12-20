@@ -67,7 +67,6 @@ const ex = {
     const time_end = Date.now()
     console.log('比对耗时:', time_end - time_start + 'ms')
     console.log('找到未使用文件个数：', noImg.length)
-    
     fs.appendFileSync('./clean-five_output.txt', JSON.stringify(noImg) + '\n')
   }
 }
