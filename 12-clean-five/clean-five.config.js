@@ -1,6 +1,4 @@
 module.exports = {
-  filePath: 'pool',
-  imgDir: 'pool/assets/images',
-  output: ""
-
+  filePath: 'test',
+  imgDir: 'test/assets/images',
 };

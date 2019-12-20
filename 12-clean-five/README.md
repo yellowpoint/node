@@ -4,11 +4,12 @@ npm i clean-five -D
 新建clean-five.config.js
 ```
 module.exports = {
-  filePath: 'test',
-  imgDir: 'test/assets/images',
+  filePath: 'test', //需要检测的文件目录
+  imgDir: 'test/assets/images',//需要清理的引入文件目录
 };
 ```
-最后
+然后
 ```
 npm run clean
 ```
+最后会生成clean-five_output.txt

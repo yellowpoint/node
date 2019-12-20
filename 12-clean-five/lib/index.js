@@ -13,6 +13,7 @@ const {
 
 let allFiles = ''
 let noImg = []
+let contentLength = 0
 
 function concatFiles() {
   function fileDisplaySync(filePath) {
@@ -39,6 +40,7 @@ function concatFiles() {
       }
       if (stat.isFile() === true) {
         let content = fs.readFileSync(filedir, 'utf-8')
+        contentLength++
         allFiles += content + '\n'
       }
     });
@@ -55,6 +57,7 @@ function check(item) {
 const ex = {
   async start() {
     concatFiles()
+    console.log('所有文件个数：', contentLength)
     console.log('所有文件合并后的长度：', allFiles.length)
     const imgArr = await getImg()
     console.log('imgArr[0]', imgArr[0])
@@ -67,7 +70,11 @@ const ex = {
     const time_end = Date.now()
     console.log('比对耗时:', time_end - time_start + 'ms')
     console.log('找到未使用文件个数：', noImg.length)
-    fs.appendFileSync('./clean-five_output.txt', JSON.stringify(noImg) + '\n')
+    let output = `
+${new Date()}
+${JSON.stringify(noImg)}
+-----------------------------`
+    fs.appendFileSync('./clean-five_output.txt', output)
   }
 }
 module.exports = ex
