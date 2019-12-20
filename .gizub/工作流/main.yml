@@ -1,4 +1,4 @@
-name: Build and test Globfs  
+name: 发布npm
 on: [push]  
 jobs:
    build:
