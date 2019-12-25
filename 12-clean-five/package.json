@@ -1,6 +1,6 @@
 {
   "name": "clean-five",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "清理未使用的文件",
   "main": "index.js",
   "scripts": {
