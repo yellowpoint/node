@@ -1,0 +1,48 @@
+{
+  "name": "wechat_spider",
+  "version": "1.1.1",
+  "description": "wechat spider by Man-in-the-middle attack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js --ignore client/ --ignore test/",
+    "prod": "NODE_ENV=production npm start",
+    "test": "mocha --recursive --exit --timeout 10000"
+  },
+  "author": "liqiang",
+  "license": "MIT",
+  "dependencies": {
+    "anyproxy": "^4.1.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "ip": "^1.1.5",
+    "json2csv": "3.11.5",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.4",
+    "morgan": "^1.9.1",
+    "motime": "^0.0.2",
+    "redis": "^2.8.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.14.3",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lqqyt2423/wechat_spider.git"
+  },
+  "keywords": [
+    "wechat",
+    "spider"
+  ],
+  "bugs": {
+    "url": "https://github.com/lqqyt2423/wechat_spider/issues"
+  },
+  "homepage": "https://github.com/lqqyt2423/wechat_spider#readme"
+}
