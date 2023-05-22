@@ -1,5 +1,5 @@
 {
-  "name": "10-web",
+  "name": "ji_ke_shi_jian",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "graphql": "^16.6.0",
     "koa": "^2.13.4",
+    "koa-graphql": "^0.12.0",
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0"
   }
